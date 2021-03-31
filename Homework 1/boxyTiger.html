@@ -20,7 +20,7 @@
 			var material = new THREE.MeshLambertMaterial({color:'springgreen'});
 			var geometryFloor = new THREE.BoxGeometry( 200, 3, 200 );
 			
-			//тревичка
+			// тревичка
 			var floorCube =  new THREE.Mesh( new THREE.BoxGeometry( 3, 3, 3 ), material );
 			var floor = [];
 			for(var i = 0; i < 50; i++){
@@ -32,31 +32,31 @@
 				}
 			}
 
-			//краченца
+			//краката
 			var r_leg = new THREE.Group();			//дясно краче
 			var l_leg = new THREE.Group();   		//ляво краче
 			r_leg.position.set(0,-6.9,90);
 			l_leg.position.set(-3,-6.9,90);
 			
 			var material = new THREE.MeshLambertMaterial({color:'darkorange'});
-			var base = new THREE.Mesh( new THREE.BoxGeometry( 2.5, 2, 2.5 ), material) 			//самите краченца
-			var base2 = base.clone();															//самите краченца
+			var base = new THREE.Mesh( new THREE.BoxGeometry( 2.5, 2, 2.5 ), material) 	//самите крака
+			var base2 = base.clone();							//самите крака
 
-			var nail1 =  new THREE.Mesh( new THREE.BoxGeometry( 0.35, 0.6, 0.05 ), new THREE.MeshLambertMaterial({color:'black'}) )		//нокътчета		
-			var nail2 =  new THREE.Mesh( new THREE.BoxGeometry( 0.35, 0.6, 0.05 ), new THREE.MeshLambertMaterial({color:'black'}) )		//нокътчета
+			var nail1 =  new THREE.Mesh( new THREE.BoxGeometry( 0.35, 0.6, 0.05 ), new THREE.MeshLambertMaterial({color:'black'}) )		//нокът		
+			var nail2 =  new THREE.Mesh( new THREE.BoxGeometry( 0.35, 0.6, 0.05 ), new THREE.MeshLambertMaterial({color:'black'}) )		//нокът
 			nail1.position.set(-0.4,-0.7,1.3);
 			nail2.position.set(0.4,-0.7,1.3);
 
 			var nail12 =  nail1.clone();
 			var nail22 =  nail2.clone();
 			
-			//ивички за дясното краченце
+			//ивици за дясното краче
 			var shortStripes = [];
 			var longStripes = [];
 			longStripes.push(new THREE.Mesh( new THREE.BoxGeometry( 1.2, 0.25, 0.05 ), new THREE.MeshLambertMaterial({color:'black'})));
 			shortStripes.push(new THREE.Mesh( new THREE.BoxGeometry( 0.8, 0.25, 0.05 ), new THREE.MeshLambertMaterial({color:'black'})));
 			
-			//ивички за ляво краченце 
+			//ивици за лявото краче 
 			var l_shortStripes = [];
 			var l_longStripes = [];
 			l_longStripes.push(new THREE.Mesh( new THREE.BoxGeometry( 1.2, 0.25, 0.05 ), new THREE.MeshLambertMaterial({color:'black'})));
@@ -95,8 +95,8 @@
 
 			r_leg.add(base, nail1, nail2); 
 			l_leg.add(base2, nail12, nail22); 
-			rb_leg = r_leg.clone(); 									//дясно задно краче
-			lb_leg = l_leg.clone(); 									//ляво задно краче
+			rb_leg = r_leg.clone(); 				//дясно задно краче
+			lb_leg = l_leg.clone(); 				//ляво задно краче
 			
 			rb_leg.position.set(0,-6.9,85);
 			lb_leg.position.set(-3,-6.9,85);
@@ -106,7 +106,7 @@
 			var body = new THREE.Mesh( new THREE.BoxGeometry( 8, 8, 8 ), material );		//тяло
 			body.position.set(-1.5,-1.82,87.5);
 
-			var face = new THREE.Group;														//лице
+			var face = new THREE.Group;								//лице
 
 			var mid_sq = new THREE.Mesh( new THREE.BoxGeometry( 3, 3, 0.1), new THREE.MeshLambertMaterial({color:'antiquewhite'}) );
 			var l_sq = mid_sq.clone();				l_sq.rotateZ(- Math.PI / 4);			l_sq.position.set(-1.5,-0.6,0);
@@ -116,12 +116,13 @@
 			var br_sq = r_sq.clone();						br_sq.position.set(1.5,-2.4,0);
 			var bmid_sq = mid_sq.clone();					bmid_sq.position.set(0,-3,0);
 
-			//очички
-			var l_eye = new THREE.Mesh( new THREE.BoxGeometry( 0.7, 1.4, 0.1), new THREE.MeshLambertMaterial({color:'limegreen'}) );//forestgreen
+			//очи
+			var l_eye = new THREE.Mesh( new THREE.BoxGeometry( 0.7, 1.4, 0.1), new THREE.MeshLambertMaterial({color:'limegreen'}) );
 			var r_eye = l_eye.clone();
 			l_eye.position.set(-1.1, -0.3, 0.001);
 			r_eye.position.set(1.1, -0.3, 0.001);
-			//зенички
+			
+			//зеници
 			var l_iris = new THREE.Mesh( new THREE.BoxGeometry( 0.3, 0.55, 0.1), new THREE.MeshLambertMaterial({color:'black'}) );
 			var r_iris = l_iris.clone();
 			l_iris.position.set(-1, -0.5, 0.1);
@@ -131,7 +132,7 @@
 			face.position.set(-1.5, -0.5, 91.5);
 			face.scale.set(0.8,1,1);
 
-			//ушички
+			//уши
 			var l_ear = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 0.5 ), material );
 			var r_ear = l_ear.clone();
 			l_ear.position.set(-4,2.6,91);
@@ -143,11 +144,11 @@
 			l_ear_inside.position.set(-4,2.55,91.3);
 			r_ear_inside.position.set(1,2.55,91.3);
 			
-			//носленце
+			//нос
 			var nose = new THREE.Mesh( new THREE.BoxGeometry( 0.9, 0.9, 0.5 ),  new THREE.MeshLambertMaterial({color:'sienna'}) );
 			nose.position.set(-1.5, -2.1, 91.5);
 			
-			//устичка
+			//уста
 			var top_lip = new THREE.Mesh( new THREE.BoxGeometry( 1.5, 0.6, 0.5 ),  new THREE.MeshLambertMaterial({color:'antiquewhite'}) );
 			var bottom_lip = new THREE.Mesh( new THREE.BoxGeometry( 1.1, 0.3, 0.7 ),  new THREE.MeshLambertMaterial({color:'antiquewhite'}) );
 			top_lip.position.set(-1.5, -3.2, 91.9);
@@ -155,7 +156,7 @@
 			
 			//група за долната челюст
 			var bottom_mouth = new THREE.Group();
-			//зъбки
+			//зъби
 			var bottom_teeth = new THREE.Mesh( new THREE.BoxGeometry( 0.15, 0.6, 0.5 ),  new THREE.MeshLambertMaterial() );
 			bottom_teeth.position.set(-1.9, -3.6, 91.8);
 			var bottom_teeth2 = bottom_teeth.clone();
@@ -169,7 +170,7 @@
 			var top_teeth2 = top_teeth.clone();
 			top_teeth2.position.set(-1, -3.5, 91.7);
 			
-			//езиче
+			//език
 			var tongue = new THREE.Mesh( new THREE.BoxGeometry( 1.1, 0.25, 0.5 ),  new THREE.MeshLambertMaterial({color:'red'}) );
 			tongue.position.set(-1.5, -3.7, 91.7);
 			var inside_mouth =  new THREE.Mesh( new THREE.BoxGeometry( 1.2, 0.7, 0.1 ),  new THREE.MeshLambertMaterial({color:'black'}) );
@@ -207,7 +208,7 @@
 			sStripes[3].position.set(2.5, 1.4, 90);
 			sStripes[4].position.set(-5.5, 1, 90);
 			sStripes[5].position.set(-5.5, -4.8, 90);
-			//
+			
 			sStripes[6].position.set(2.5, -1.5, 85);
 			lStripes[6].position.set(2.5, 1, 85.5);
 			lStripes[7].position.set(2.5, -1.5, 850.5);
@@ -276,9 +277,11 @@
 				camera.position.set(25*Math.cos(frame/100),5, 90 + 25*Math.sin(frame/100));
 				camera.lookAt(new THREE.Vector3(0,-5,87));
 				light.position.set( 300*Math.cos(frame/100), 150, 300*Math.sin(frame/100));
-				// //движение на зениците 
+				
+				//движение на зениците 
 				l_iris.position.set(-1.1+0.15*Math.sin(frame/50), -0.5, 0.01)
 				r_iris.position.set(1.1+0.15*Math.sin(frame/50), -0.5, 0.01)
+				
 				//движение на устата
 				bottom_mouth.position.set(0,-0.3*Math.sin(frame/15),0);
 				
