@@ -1,2 +1,98 @@
+﻿<!DOCTYPE html>
 
-SOON
+<html>
+	<head>
+		<title> Зарчета </title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="stats.min.js"></script>
+		<script src="WebGL.js"></script>
+		<script src="vax.js"></script>
+		<script src="Objects.js"></script>
+		<script src="dat.gui.js"></script>
+		<script src="physi.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInit();
+			
+			renderer.shadowMap.enabled = true;
+			light.shadow.mapSize = new THREE.Vector2( 1024*2, 1024*2 );
+			light.castShadow = true;
+
+			scene.background = new THREE.Color('#FFC9DC')
+		
+			// кутията
+			var box = Box('#FBF881');
+			box.position.set(0,-2,-4)
+
+			var dices = [];
+			// синееещото зарче
+			dices.push(new Dice('#2369A0'));
+			
+			// розовеещото зарче
+			dices.push(new Dice('#FF3EA5'));
+			
+			var y = THREE.Math.randFloat(15,30);
+			for(var i = 0; i < dices.length ; i++ ){
+				dices[i].position.set(THREE.Math.randFloat(-18,18), y+10*i, THREE.Math.randFloat(-22,14));
+				dices[i].rotation.set(THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3) );
+				scene.add(dices[i]);
+			}
+			
+			scene.add(box);
+			
+			var gui = new dat.GUI();
+			gui.domElement.style.marginRight = 0;
+			
+			var data = {
+				Roll : rollAgain,
+				Add : addDice,
+				Remove : function(){ scene.remove(dices[dices.length-1]); dices.pop(); }
+			};
+
+			gui.add( data, 'Roll').name('Roll again');
+			gui.add( data, 'Add').name('Add another dice');
+			gui.add( data, 'Remove').name('Remove dice');
+
+			function rollAgain()
+			{
+				// Поради някаква причина, когато зарчето се забавя, изведнъж спира да се движи и не се намества достатъчно добре
+
+				var y = THREE.Math.randFloat(15,30);
+				for(var i = 0; i < dices.length; i++ ){
+					dices[i].position.set(THREE.Math.randFloat(-18,18), y+10*i, THREE.Math.randFloat(-22,14));
+					dices[i].rotation.set(THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3) );
+					scene.add(dices[i]);
+				}
+
+			}
+			
+			function addDice()
+			{
+				// случаен цвят
+				var randomColor = Math.floor(Math.random()*16777215).toString(16);
+				dices.push(new Dice("#".concat(randomColor)));
+
+				dices[dices.length-1].position.set(THREE.Math.randFloat(-18,19), THREE.Math.randFloat(15,30), THREE.Math.randFloat(-22,14));
+				dices[dices.length-1].rotation.set(THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3), THREE.Math.randFloat(-3,3) );
+				
+				scene.add(dices[dices.length-1]);
+			}
+
+			function animate()
+			{
+				scene.simulate( 1/15 );
+				// scene.simulate( 1/10 );
+
+				// scene.rotation.set(0,t,0);
+			}
+		</script>
+	</body>
+</html>
+
+
